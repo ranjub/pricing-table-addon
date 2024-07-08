@@ -83,7 +83,7 @@ class Elementor_Pricing_Table_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Button Link', 'elementor-addon'),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('#', 'elementor-addon'),
+                'placeholder' => esc_html__('https://example.com', 'elementor-addon'),
                 'default' => [
                     'url' => '',
                 ],
