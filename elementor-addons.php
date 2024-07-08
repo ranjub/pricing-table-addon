@@ -14,9 +14,11 @@ function register_custom_widgets($widgets_manager)
 
     require_once(plugin_dir_path(__FILE__) . '/widgets/hello-world-widget.php');
     require_once(plugin_dir_path(__FILE__) . '/widgets/pricing-table-widget.php');
+    require_once(plugin_dir_path(__FILE__) . '/widgets/custom-dropdown-widget.php');
 
     $widgets_manager->register(new \Elementor_Hello_World_Widget());
     $widgets_manager->register(new \Elementor_Pricing_Table_Widget());
+    $widgets_manager->register(new \Elementor_Custom_Dropdown_Widget());
 }
 add_action('elementor/widgets/register', 'register_custom_widgets');
 
