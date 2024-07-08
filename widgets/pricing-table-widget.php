@@ -97,22 +97,22 @@ class Elementor_Pricing_Table_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 ?>
-        <div class="pricing-table-container">
-            <div class="pricing-table">
-                <div class="pricing-header">
-                    <h3><?php echo esc_html($settings['title']); ?></h3>
-                    <div class="price"><?php echo esc_html($settings['price']); ?></div>
-                </div>
-                <ul class="features">
-                    <?php foreach (explode("\n", $settings['features']) as $feature) : ?>
-                        <li><?php echo esc_html($feature); ?></li>
-                    <?php endforeach; ?>
-                </ul>
-                <a class="pricing-button" href="<?php echo esc_url($settings['button_link']['url']); ?>">
-                    <?php echo esc_html($settings['button_text']); ?>
-                </a>
-            </div>
+<div class="pricing-table-container">
+    <div class="pricing-table">
+        <div class="pricing-header">
+            <h3><?php echo esc_html($settings['title']); ?></h3>
+            <div class="price"><?php echo esc_html($settings['price']); ?></div>
         </div>
+        <ul class="features">
+            <?php foreach (explode("\n", $settings['features']) as $feature) : ?>
+            <li><?php echo esc_html($feature); ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <a class="pricing-button" href="<?php echo esc_url($settings['button_link']['url']); ?>">
+            <?php echo esc_html($settings['button_text']); ?>
+        </a>
+    </div>
+</div>
 <?php
     }
 }
