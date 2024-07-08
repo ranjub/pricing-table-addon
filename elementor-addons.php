@@ -25,5 +25,6 @@ add_action('elementor/widgets/register', 'register_custom_widgets');
 function elementor_addon_scripts()
 {
     wp_enqueue_style('pricing-table', plugins_url('/css/pricing-table.css', __FILE__));
+    wp_enqueue_style('custom-dropdown', plugins_url('/css/custom-dropdown.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'elementor_addon_scripts');
