@@ -98,8 +98,12 @@ class Elementor_Custom_Dropdown_Widget extends \Elementor\Widget_Base
                 if ($count % 3 == 0) {
                     echo '</div><div class="posts-grid">';
                 }
+
                 echo '<div class="post-item">';
-                echo '<h3>' . get_the_title() . '</h3>';
+                if (has_post_thumbnail()) {
+                    echo '<div class="post-thumbnail"><a href="' . get_permalink() . '">' . get_the_post_thumbnail(get_the_ID(), 'medium') . '</a></div>';
+                }
+                echo '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
                 echo '<div class="post-content">' . get_the_excerpt() . '</div>';
                 echo '</div>';
                 $count++;
