@@ -43,8 +43,11 @@ class Elementor_Custom_Dropdown_Widget extends \Elementor\Widget_Base
                 'label' => __('Select Category', 'elementor-addon'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => $this->get_categories_options(),
+                'default' => 'all', // Set 'All Categories' as default
+
             ]
         );
+
 
         // Add control for selecting order
         $this->add_control(
@@ -65,12 +68,15 @@ class Elementor_Custom_Dropdown_Widget extends \Elementor\Widget_Base
     private function get_categories_options()
     {
         $categories = get_categories();
-        $options = [];
+        $options = ['all' => __('All Categories', 'elementor-addon')]; // Add 'All Categories' option
+
         foreach ($categories as $category) {
             $options[$category->slug] = $category->name;
         }
         return $options;
     }
+
+
 
     protected function render()
     {
@@ -82,12 +88,20 @@ class Elementor_Custom_Dropdown_Widget extends \Elementor\Widget_Base
 
         // Query posts
         $args = [
-            'category_name' => $category,
             'order' => $order,
             'orderby' => 'title',
             'posts_per_page' => -1,
         ];
+
+        // Add category to query if not 'all'
+        if ($category !== 'all') {
+            $args['category_name'] = $category;
+        }
         $query = new WP_Query($args);
+
+        $settings = $this->get_settings_for_display();
+
+
 
         // Display posts in three columns
         if ($query->have_posts()) {
