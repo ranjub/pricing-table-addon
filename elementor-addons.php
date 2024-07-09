@@ -28,3 +28,20 @@ function elementor_addon_scripts()
     wp_enqueue_style('custom-dropdown', plugins_url('/css/custom-dropdown.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'elementor_addon_scripts');
+
+// Add a new column to the posts list
+function add_post_id_column($columns)
+{
+    $columns['post_id'] = 'Post ID';
+    return $columns;
+}
+add_filter('manage_post_posts_columns', 'add_post_id_column');
+
+// Display the post ID in the new column
+function display_post_id_column($column, $post_id)
+{
+    if ($column === 'post_id') {
+        echo $post_id;
+    }
+}
+add_action('manage_posts_custom_column', 'display_post_id_column', 10, 2);
