@@ -84,6 +84,7 @@ class Elementor_Custom_Dropdown_Widget extends \Elementor\Widget_Base
         $args = [
             'category_name' => $category,
             'order' => $order,
+            'orderby' => 'title',
             'posts_per_page' => -1,
         ];
         $query = new WP_Query($args);
